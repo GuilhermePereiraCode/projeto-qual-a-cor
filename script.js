@@ -2,8 +2,6 @@ let botaoMudarCor = document.getElementById('MudarCor')
 
 let letrasEnumeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
 
-let n = 0
-
 modoHexa.addEventListener('click', function(){
     iHex.checked = true
 })
@@ -24,22 +22,20 @@ botaoMudarCor.addEventListener('click', function(){
 })
 
 function corRandomHex(){
-    let corHex = ['#']
+    let corHex = '#'
 
     for(let cont = 0; cont < 6; cont++){
-        n = 0
-        n = Math.floor(Math.random() * 16)   
-        corHex.push(letrasEnumeros[n])
+        let n = Math.floor(Math.random() * letrasEnumeros.length)   
+        corHex += letrasEnumeros[n]
     }
-    let codeHex = corHex[0] + corHex[1] + corHex[2] + corHex[3] + corHex[4] + corHex[5] + corHex[6]
-
-    if ((codeHex.includes('0') && (codeHex.includes('1') || codeHex.includes('2'))) || corHex[1] <= 3){
+    
+    if ((corHex.includes('0') && (corHex.includes('1') || corHex.includes('2'))) || corHex[1] <= 3){
         document.querySelector('main').style.color = 'white'
     }else{
         document.querySelector('main').style.color = 'black'
     }
 
-    return codeHex
+    return corHex
 }
 
 function corRandomRgb(){
